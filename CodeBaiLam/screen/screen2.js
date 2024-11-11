@@ -13,7 +13,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchBikes } from '../bikeSlice';
 
-export default function Component() {
+export default function Screen2({navigation}) {
   const [selectedFilter, setSelectedFilter] = useState('All');
   const [favorites, setFavorites] = useState();
 
@@ -28,48 +28,8 @@ export default function Component() {
     dispatch(fetchBikes());
   }, [dispatch]);
   
-  console.log(data)
 
   const filters = ['All', 'Roadbike', 'Mountain'];
-
-  const bikes = [
-    {
-      id: '1',
-      name: 'Pinarello',
-      model: '1800',
-      image: 'https://picsum.photos/200',
-    },
-    {
-      id: '2',
-      name: 'Plus Mountain',
-      model: '1700',
-      image: 'https://picsum.photos/200',
-    },
-    {
-      id: '3',
-      name: 'Plus Bike',
-      model: '1500',
-      image: 'https://picsum.photos/200',
-    },
-    {
-      id: '4',
-      name: 'Pinarello',
-      model: '1900',
-      image: 'https://picsum.photos/200',
-    },
-    {
-      id: '5',
-      name: 'Pinarello',
-      model: '2700',
-      image: 'https://picsum.photos/200',
-    },
-    {
-      id: '6',
-      name: 'Pinarello',
-      model: '1350',
-      image: 'https://picsum.photos/200',
-    }
-  ];
 
   const toggleFavorite = (id: string) => {
     setFavorites((prev) => {
@@ -86,6 +46,12 @@ export default function Component() {
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.header}>The world's Best Bike</Text>
+      <TouchableOpacity
+            style={{backgroundColor:'aqua', width:60, height:30, justifyContent:'center', alignItems:'center', borderRadius:4, alignSelf:'center', color:'gray'}}
+            onPress={() => {navigation.navigate('Screen3')}}
+            >
+            Add
+      </TouchableOpacity>
       <View style={styles.filterContainer}>
         {filters.map((filter) => (
           <TouchableOpacity
@@ -128,6 +94,8 @@ export default function Component() {
           }}
           numColumns={2}
         />
+
+        
       </ScrollView>
     </SafeAreaView>
   );

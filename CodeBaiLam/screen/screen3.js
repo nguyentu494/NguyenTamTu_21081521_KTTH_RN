@@ -1,7 +1,35 @@
-import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native'
-import { Heart } from 'lucide-react-native'
+import { View, Text, Image, TouchableOpacity, StyleSheet, TextInput } from 'react-native'
+import { useDispatch } from 'react-redux';
+import { addBike } from '../bikeSlice';
+import {useState} from 'react'
 
-export default function Component() {
+export default function Screen3({navigation}) {
+  const dispatch = useDispatch();
+  const [name, setName] = useState('');
+  const [price, setPrice] = useState('');
+  const [image, setImage] = useState('');
+
+  const handleAdd = (e) => {
+    e.preventDefault();
+    
+    // const newBike = {
+    //   name:'Pina Mountain',
+    //   image: 'https://picsum.photos/200',
+    //   model: parseFloat(449),
+    // };
+
+    const newBike = {
+      name: name,
+      image: image,
+      model: parseFloat(price),
+    };
+
+    // Dispatch action addBike
+    dispatch(addBike(newBike));
+
+    navigation.navigate('Screen2')
+  };
+
   return (
     <View style={styles.container}>
         <Image
@@ -10,26 +38,26 @@ export default function Component() {
           resizeMode="contain"
         />
         
-        <Text style={styles.title}>Pina Mountain</Text>
+        <Text style={styles.title}>Ten</Text>
+        <TextInput style={{border:1, backgroundColor:'white'}} onChangeText={(val) => {
+          setName(val)
+        }}/>
         
-        <View style={styles.priceContainer}>
-          <Text style={styles.discountText}>15% OFF | 350$</Text>
-          <Text style={styles.price}>449$</Text>
-        </View>
+        <Text style={styles.title}>Gia</Text>
+        <TextInput style={{border:1, backgroundColor:'white'}} onChangeText={(val) => {
+          setPrice(val)
+        }}/>
 
-        <View style={styles.descriptionContainer}>
-          <Text style={styles.descriptionTitle}>Description</Text>
-          <Text style={styles.descriptionText}>
-            It is a very important form of writing as we write almost everything in paragraphs, be it an answer, essay, story, emails, etc.
-          </Text>
-        </View>
+        <Text style={styles.title}>Hinh</Text>
+        <TextInput style={{border:1, backgroundColor:'white'}} onChangeText={(val) => {
+          setImage(val)
+        }}/>
 
         <View style={styles.footer}>
           <TouchableOpacity style={styles.wishlistButton}>
-            <Heart size={24} color="#000" />
           </TouchableOpacity>
           
-          <TouchableOpacity style={styles.addButton}>
+          <TouchableOpacity style={styles.addButton} onPress={handleAdd}>
             <Text style={styles.addButtonText}>Add to card</Text>
           </TouchableOpacity>
         </View>
