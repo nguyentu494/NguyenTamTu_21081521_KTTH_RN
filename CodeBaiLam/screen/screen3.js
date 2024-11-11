@@ -81,33 +81,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 8,
   },
-  priceContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-    marginBottom: 16,
-  },
-  discountText: {
-    fontSize: 16,
-    color: '#666',
-  },
-  price: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  descriptionContainer: {
-    marginBottom: 16,
-  },
-  descriptionTitle: {
-    fontSize: 18,
-    fontWeight: '600',
-    marginBottom: 8,
-  },
-  descriptionText: {
-    fontSize: 14,
-    color: '#666',
-    lineHeight: 20,
-  },
   footer: {
     flexDirection: 'row',
     alignItems: 'center',

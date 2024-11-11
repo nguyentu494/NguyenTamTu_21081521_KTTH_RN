@@ -88,7 +88,7 @@ export default function Screen2({navigation}) {
                     onPress={() => toggleFavorite(item.id)}></TouchableOpacity>
                 </View>
                 <Text style={styles.bikeName}>{item.name}</Text>
-                <Text style={styles.bikeModel}>{item.model}</Text>
+                <Text style={styles.bikeModel}>${item.model}</Text>
               </View>
             );
           }}
